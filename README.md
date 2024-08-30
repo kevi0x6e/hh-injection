@@ -21,7 +21,7 @@ This tool allows you to check how a URL responds to different redirection attemp
 
 1. Clone the repository: 
 
-```UPDATE-URL```
+```git clone https://github.com/kevi0x6e/hh-injection.git```
 
 2. Navigate to the project directory:
 

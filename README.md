@@ -67,12 +67,12 @@ Attempt 3: Status code: 403
 
 The following improvements are planned for future versions:
 
-[ ] Add Cookie Bomb attack
-[ ] Add Cache Poisoning attack
-[ ] Implementation of more robust concurrency
-[ ] Payload customization
-[ ] Implementation of evasion techniques
-[ ] Support for HTTP/2 and HTTP/3
+- [ ] Add Cookie Bomb attack
+- [ ] Add Cache Poisoning attack
+- [ ] Implementation of more robust concurrency
+- [ ] Payload customization
+- [ ] Implementation of evasion techniques
+- [ ] Support for HTTP/2 and HTTP/3
 
 ## Contributing
 

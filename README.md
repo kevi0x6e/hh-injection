@@ -35,10 +35,12 @@ go build -o hh-injection main.go
 Run the tool specifying the target URL and the host to inject:
 
 ### Parameters
--url (required): The target URL to test.
--test-host-injection (optional): The value to inject into the Host header and related headers (default: google.com).
--cache-poison (optional): Enables the cache poisoning payload.
--cookie-bomb (optional): Enables the cookie bomb payload.
+
+- `-url` **(required)**: Target URL to be tested.
+- `-test-host-injection` *(optional)*: Value to inject into the `Host` header and related headers.  
+  **Default**: `google.com`
+- `-cache-poison` *(optional)*: Enables the cache poisoning payload.
+- `-cookie-bomb` *(optional)*: Enables the cookie bomb payload.
 
 ## Examples
 

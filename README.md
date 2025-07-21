@@ -1,17 +1,10 @@
 # hh-injection
 
-hh-injection is a Go-based tool for testing and analyzing HTTP header injection vulnerabilities in specific URLs.
+`hh-injection` is a Go-based tool designed to test and analyze HTTP header injection vulnerabilities on specific URLs.
 
 ## Description
 
-This tool allows you to check how a URL responds to different redirection attempts by manipulating the HTTP headers `Host`, `X-Host`, and `X-Forwarded-Host`. It is useful for identifying potential redirection vulnerabilities in web applications.
-
-## Features
-
-- Tests a URL with different combinations of HTTP headers
-- Executes requests in parallel for improved efficiency
-- Allows specifying the target URL and initial host via command line
-- Displays the HTTP status code or redirection location for each attempt
+This tool allows you to assess how a target URL responds to different manipulations of HTTP headers such as `Host`, `X-Host`, and `X-Forwarded-Host`, simulating header injection attacks, cache poisoning, and cookie bomb payloads. It is useful for identifying potential vulnerabilities like open redirects, host header injection, and related attack vectors.
 
 ## Requirements
 
@@ -19,64 +12,62 @@ This tool allows you to check how a URL responds to different redirection attemp
 
 ## Installation
 
-1. Clone the repository: 
+1. Clone the repository:
 
-```git clone https://github.com/kevi0x6e/hh-injection.git```
+```bash
+git clone https://github.com/kevi0x6e/hh-injection.git
+```
 
 2. Navigate to the project directory:
 
-```cd hh-injection```
+```bash
+cd hh-injection
+```
 
-3. Compile the program:
+3. Build the binary:
 
-```go build -o hh-injection main.go```
+```bash
+go build -o hh-injection main.go
+```
 
 ## Usage
 
-Run the program by specifying the URL and initial host:
+Run the tool specifying the target URL and the host to inject:
 
-Parameters:
-- `-url`: The URL you want to test (default: "http://www.vulnerable.com")
-- `-host`: The initial host to be used (default: "google.com")
+### Parameters
+-url (required): The target URL to test.
+-test-host-injection (optional): The value to inject into the Host header and related headers (default: google.com).
+-cache-poison (optional): Enables the cache poisoning payload.
+-cookie-bomb (optional): Enables the cookie bomb payload.
 
 ## Examples
 
+```bash
+# Basic test with default injected host (google.com)
+./hh-injection -url https://victim-site.com
+
+# Test with a custom injected host
+./hh-injection -url https://victim-site.com -test-host-injection test.com
+
+# Test with cache poisoning enabled
+./hh-injection -url https://victim-site.com -test-host-injection test.com -cache-poison
+
+# Test with cookie bomb enabled
+./hh-injection -url https://victim-site.com -test-host-injection test.com -cookie-bomb
+
+# Full test with cache poisoning and cookie bomb enabled
+./hh-injection -url https://victim-site.com -test-host-injection test.com -cache-poison -cookie-bomb
 ```
-
-1. Test with default values:
-
-./hh-injection
-
-2. Test a specific website:
-
-./hh-injection -url=http://www.mysiteone.com -host=mysitetwo.com
-
-```
-
-## Output
-
-The tool will display the result of each attempt, showing whether there was a redirection or the HTTP status code received.
-
-Example output:
-
-Attempt 1: Status code: 200
-Attempt 2: Redirected to: https://www.example.com/new-page
-Attempt 3: Status code: 403
 
 ## Future Improvements
 
-The following improvements are planned for future versions:
-
-- [ ] Add Cookie Bomb attack
-- [ ] Add Cache Poisoning attack
-- [ ] Implementation of more robust concurrency
 - [ ] Payload customization
-- [ ] Implementation of evasion techniques
 - [ ] Support for HTTP/2 and HTTP/3
+- [ ] Support for authentication and custom cookies
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please submit a Pull Request.
 
 ## License
 
@@ -84,4 +75,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Disclaimer
 
-This tool should be used for testing purposes only and with explicit permission. Misuse of this tool may violate terms of service or laws. Use at your own risk.
+This tool should be used only for authorized testing purposes. Unauthorized use may violate terms of service or laws. Use at your own risk.
